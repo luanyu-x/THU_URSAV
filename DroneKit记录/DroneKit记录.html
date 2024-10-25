@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DroneKit记录 &mdash; THU_URSAV v1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a3fd9cb"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="配置ArduPilot SITL" href="../SITL%E8%B0%83%E8%AF%95/SITL%E8%B0%83%E8%AF%95.html" />
+    <link rel="prev" title="技术说明" href="../%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            THU_URSAV
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E/index.html">汇总</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DroneKit记录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api">API参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">连接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">车辆状态和设置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">常用指令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参数设置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">起飞</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">常用指令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">导航和控制无人机</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">常用指令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#auto">任务（AUTO模式下）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">★相关任务操作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">开始任务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">判断任务结束</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">其他</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../SITL%E8%B0%83%E8%AF%95/SITL%E8%B0%83%E8%AF%95.html">配置ArduPilot SITL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97.html">个人日志</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">THU_URSAV</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DroneKit记录</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/DroneKit记录/DroneKit记录.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dronekit">
+<h1>DroneKit记录<a class="headerlink" href="#dronekit" title="Link to this heading"></a></h1>
+<section id="api">
+<h2>API参考<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<p>https://dronekit-python.readthedocs.io/en/latest/automodule.html#dronekit.Vehicle.gimbal</p>
+<p>Vehicle movement is primarily controlled using the Vehicle.armed attribute and <code class="docutils literal notranslate"><span class="pre">Vehicle.simple_takeoff()</span></code> and <code class="docutils literal notranslate"><span class="pre">Vehicle.simple_goto</span></code> in GUIDED mode.</p>
+<p>Velocity-based movement and control over other vehicle features can be achieved using custom MAVLink messages (<code class="docutils literal notranslate"><span class="pre">Vehicle.send_mavlink()</span></code>, <code class="docutils literal notranslate"><span class="pre">Vehicle.message_factory()</span></code>).</p>
+<p>It is also possible to work with vehicle “missions” using the <code class="docutils literal notranslate"><span class="pre">Vehicle.commands</span> <span class="pre">attribute</span></code>, and run them in AUTO mode.</p>
+<p>gimbal</p>
+<p>time.sleep(num)</p>
+</section>
+<section id="id1">
+<h2>连接<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>https://dronekit-python.readthedocs.io/en/latest/guide/connecting_vehicle.html#get-started-connect-string</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dronekit_sitl.start_default()</span></code>，返回sitl？</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sitl.connection_string()</span></code>，返回连接字符串</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">connect（连接字符串，wait_ready，baud）</span></code>，返回vehicle</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>车辆状态和设置<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>https://dronekit-python.readthedocs.io/en/latest/guide/vehicle_state_and_parameters.html</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;Airspeed: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">airspeed</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">VehicleMode</span><span class="p">(</span><span class="s2">&quot;GUIDED&quot;</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">armed</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>不能确保成功修改，轮询法见网址</p>
+<section id="id3">
+<h3>常用指令<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ol>
+<li><p>★<code class="docutils literal notranslate"><span class="pre">vehicle.location</span></code>。含</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">global_frame</span></code> (LocationGlobal)：绝对经纬度，绝对高度
+例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;Global Location: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">global_frame</span>
+<span class="nb">print</span> <span class="s2">&quot;Sea level altitude is: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">global_frame</span><span class="o">.</span><span class="n">alt</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">global_relative_frame</span></code> (LocationGlobalRelative)：绝对经纬度，相对home的高度
+例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">global_relative_frame</span><span class="o">.</span><span class="n">lat</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">global_relative_frame</span><span class="o">.</span><span class="n">lon</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">global_relative_frame</span><span class="o">.</span><span class="n">alt</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">local_frame</span></code> (LocationLocal)：相对home的位置和高度</p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vehicle.attitude</span></code>，获取飞机姿态角。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">attitude</span><span class="o">.</span><span class="n">pitch</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">attitude</span><span class="o">.</span><span class="n">yaw</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">attitude</span><span class="o">.</span><span class="n">roll</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h3>参数设置<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>★使用<code class="docutils literal notranslate"><span class="pre">Vehicle.parameters</span></code>，返回一个<code class="docutils literal notranslate"><span class="pre">Parameters</span></code>对象</p>
+</section>
+</section>
+<section id="id5">
+<h2>起飞<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ol class="simple">
+<li><p>设置为GUIDED（通常）</p></li>
+<li><p>发出arm命令</p></li>
+<li><p>起飞</p></li>
+</ol>
+<section id="id6">
+<h3>常用指令<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vehicle.is_armable</span></code>，判断是否能起飞</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vehicle.mode</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vehicle.armed</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vehicle.simple_takeoff</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="id7">
+<h2>导航和控制无人机<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h3>常用指令<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">simple_goto(location,</span> <span class="pre">airspeed=None,</span> <span class="pre">groundspeed=None)</span></code>，指<code class="docutils literal notranslate"><span class="pre">LocationGlobal</span></code> 或 <code class="docutils literal notranslate"><span class="pre">LocationGlobalRelative</span></code></p></li>
+<li><p>★先对信息进行编码<code class="docutils literal notranslate"><span class="pre">vehicle.message_factory.set_position_target_local_ned_encode(...)</span></code>或<code class="docutils literal notranslate"><span class="pre">vehicle.message_factory.command_long_encode(...)</span></code>等，返回message类，然后使用<code class="docutils literal notranslate"><span class="pre">vehicle.send_mavlink(msg)</span></code>发送。见：https://dronekit-python.readthedocs.io/en/latest/guide/copter/guided_mode.html#guided-mode-how-to-send-commands</p></li>
+<li><p>★<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">get_location_metres(original_location,</span> <span class="pre">dNorth,</span> <span class="pre">dEast)</span></code>，相对位置转绝对坐标，返回LocationGlobal类型</p></li>
+<li><p>★<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">get_distance_metres(aLocation1,</span> <span class="pre">aLocation2)</span></code>，返回两个LocationGlobal 或 LocationGlobalRelative 对象之间的地面距离（以米为单位）</p></li>
+<li><p>★<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">get_bearing(aLocation1,</span> <span class="pre">aLocation2)</span></code>，返回作为参数传递的两个 LocationGlobal 对象之间的方位。</p></li>
+</ol>
+<p>一些命令例如MAV_CMD_NAV_TAKEOFF已经集成在<code class="docutils literal notranslate"><span class="pre">Vehicle.simple_takeoff()</span></code>中，无需使用mavlink发送</p>
+</section>
+</section>
+<section id="auto">
+<h2>任务（AUTO模式下）<a class="headerlink" href="#auto" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3>分类<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ol class="simple">
+<li><p>MAV_CMD_NAV_*，用于飞行器位置的移动</p></li>
+<li><p>MAV_CMD_DO_*，用于执行辅助功能（例如伺服电机）</p></li>
+<li><p>MAV_CMD_NAV_*MAV_CMD_CONDITION_DISTANCE，延迟DO命令的执行</p></li>
+</ol>
+<p>？：在一次任务中，最多只能同时运行一条导航命令和一条 DO 或 CONDITION 命令。CONDITION 和 DO 命令与上次发送的 NAV 命令相关联：如果无人飞行器在执行这些命令之前到达航点，则会加载下一条 NAV 命令，并跳过这些命令。</p>
+</section>
+<section id="id10">
+<h3>★相关任务操作<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ol class="simple">
+<li><p>下载当前任务</p></li>
+<li><p>清除当前任务</p></li>
+<li><p>创建、添加任务命令</p></li>
+<li><p>修改任务</p></li>
+</ol>
+<p>以上见网址 https://dronekit-python.readthedocs.io/en/latest/guide/auto_mode.html</p>
+<p>★<code class="docutils literal notranslate"><span class="pre">Command(...)</span></code>创建类：</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">=</span> <span class="pre">Command(0,0,0,</span> <span class="pre">mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT,</span> <span class="pre">mavutil.mavlink.MAV_CMD_NAV_WAYPOINT,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,-34.364114,</span> <span class="pre">149.166022,</span> <span class="pre">30)</span></code>，其中<code class="docutils literal notranslate"><span class="pre">mavutil.mavlink.MAV_CMD_NAV_WAYPOINT</span></code>表示任务命令。返回航点命令，各参数意义见网址</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmd.command</span> <span class="pre">=</span> <span class="pre">mavutil.mavlink.MAV_CMD_NAV_TAKEOFF</span></code>，可修改任务命令</p></li>
+</ol>
+<p>见：https://dronekit-python.readthedocs.io/en/latest/automodule.html#dronekit.Vehicle.commands</p>
+</section>
+<section id="id11">
+<h3>开始任务<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol>
+<li><p>要开始任务，请将模式更改为 AUTO</p></li>
+<li><p>如果vehicle在空中，则只需将模式更改为自动即可启动任务。</p></li>
+<li><p>Copter 3.3 版本及更高版本：如果vehicle（仅）在地面上，您还需要发送MAV_CMD_MISSION_START命令。</p></li>
+<li><p>您可以通过退出自动模式（例如进入引导模式）来停止/暂停当前任务。如果切换回 自动模式：任务将在开始时重新启动或在当前航点恢复 - 行为取决于MIS_RESTART参数的值（适用于所有车辆类型）。</p></li>
+<li><p>更改当前任务命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Current Waypoint: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">commands</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>At the end of the mission the vehicle will enter LOITER mode (hover in place for Copter, circle for Plane, stop for Rover).</p></li>
+<li><p>★<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">upload_mission(aFileName)</span></code>，将航点文件上传至飞控（调用了<code class="docutils literal notranslate"><span class="pre">readmission()</span></code>）</p></li>
+<li><p>★<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">readmission(aFileName)</span></code>，读取航点文件，返回一个列表，元素为cmd</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">save_mission(aFileName)</span></code>，保存任务为航点文件（调用了<code class="docutils literal notranslate"><span class="pre">save_mission(aFileName)</span></code>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">download_mission()</span></code>，下载飞控上的任务，返回一个列表，元素为cmd</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">distance_to_current_waypoint()</span></code>，返回到下一个航点的距离（以米为单位）</p></li>
+</ol>
+</section>
+<section id="id12">
+<h3>判断任务结束<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ol class="simple">
+<li><p>~~Add a dummy mission command and poll <code class="docutils literal notranslate"><span class="pre">Vehicle.commands.next</span></code> for the transition to the final command：在最后创建虚拟任务，轮询<code class="docutils literal notranslate"><span class="pre">Vehicle.commands.next</span></code>是否等于该任务。~~见下载的DroneKit例程，有解决该问题的方法。</p></li>
+</ol>
+</section>
+</section>
+<section id="id13">
+<h2>其他<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<ol class="simple">
+<li><p>监听器listener：属性监听器，可监听并返回vehicle的一些属性。对于消息监听器，每次收到指定消息时都会调用该函数。</p></li>
+<li></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E/%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E.html" class="btn btn-neutral float-left" title="技术说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../SITL%E8%B0%83%E8%AF%95/SITL%E8%B0%83%E8%AF%95.html" class="btn btn-neutral float-right" title="配置ArduPilot SITL" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, xjh。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
