@@ -11,7 +11,7 @@ THU察打一体无人机项目文档
    :maxdepth: 1
    :caption: Contents:
    
-   技术说明/index
+   技术说明/技术说明
    DroneKit记录/DroneKit记录
    SITL调试/SITL调试
    个人日志/个人日志
